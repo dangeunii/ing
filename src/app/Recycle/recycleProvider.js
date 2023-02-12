@@ -11,5 +11,5 @@ exports.retrieveUser = async function (trashType) {
 
   connection.release();
 
-  return recycleResult[0];
+  return recycleResult;
 };

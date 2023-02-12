@@ -1,8 +1,8 @@
 async function selectRecycleResult(connection, trashType) {
     const selectRecycleResultQuery = `
-                  SELECT email, nickname 
-                  FROM UserInfo 
-                  WHERE email = ?;
+                  SELECT * 
+                  FROM Garbage 
+                  WHERE trash = ? ;
                   `;
     const [resultRows] = await connection.query(selectRecycleResultQuery, trashType);
     return resultRows;

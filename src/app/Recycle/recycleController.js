@@ -16,6 +16,7 @@ exports.getRecycle = async function (req, res) {
      * Query String: trashType
      */
     const trashType = req.query.trashType;
+    const nation = req.query.nation;
 
     if (!trashType) {
         // 쓰레기 타입 정보 없음 오류
@@ -26,23 +27,5 @@ exports.getRecycle = async function (req, res) {
         const recycleResult = await recycleProvider.getRecycleResult(trashType);
         return res.send(response(baseResponse.SUCCESS, recycleResult));
     }
-};
-
-/**
- * API No. 3
- * API Name : 특정 유저 조회 API
- * [GET] /app/users/{userId}
- */
-exports.getUserById = async function (req, res) {
-
-    /**
-     * Path Variable: userId
-     */
-    const userId = req.params.userId;
-
-    if (!userId) return res.send(errResponse(baseResponse.USER_USERID_EMPTY));
-
-    const userByUserId = await userProvider.retrieveUser(userId);
-    return res.send(response(baseResponse.SUCCESS, userByUserId));
 };
 
